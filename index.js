@@ -3,12 +3,12 @@ const { randomBytes } = require('crypto');
 
 
 const PORT = 5000;
+const squawkData = {};
+
 
 const app = express();
 
-const squawkData = {};
-
-app.use(express.json);
+app.use(express.json());
 
 app.post('/birdsquawk', (req, res) => {
     const id = randomBytes(8).toString('hex');
@@ -16,7 +16,11 @@ app.post('/birdsquawk', (req, res) => {
 
     squawkData[id] = { id, title };
 
-    res.sendStatus(201).send(squawkData[id]);
+    res.status(201).send(squawkData[id]);
+});
+
+app.get('/', (req, res) => {
+    res.send("Hello")
 });
 
 app.listen(PORT, () => {
