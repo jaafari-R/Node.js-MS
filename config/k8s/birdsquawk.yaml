@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: birdsquawk
+spec:
+  containers: 
+    - name: birdsquawk
+      image: jramadan/birdsquawk:0.0.1

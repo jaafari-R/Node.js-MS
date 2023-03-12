@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: peep-service
+spec:
+  containers: 
+    - name: peep-service
+      image: jramadan/peep-service:0.0.1
