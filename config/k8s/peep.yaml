@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: birdsquawk
+  name: peep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: birdsquawk
+      app: peep
   template:
     metadata:
       labels:
-        app: birdsquawk
+        app: peep
     spec:
       containers:
-        - name: birdsquawk
-          image: jramadan/birdsquawk:0.0.1
+        - name: peep
+          image: jramadan/peep:0.0.1
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: birdsquawk-clusterip
+  name: peep-clusterip
 spec:
   selector:
-    app: birdsquawk
+    app: peep
   ports:
-    - name: birdsquawk
+    - name: peep
       protocol: TCP
-      port: 5000
+      port: 5001
       targetPort: 5001

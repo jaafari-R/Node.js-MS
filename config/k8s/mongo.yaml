@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: birdsquawk
+  name: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: birdsquawk
+      app: mongo
   template:
     metadata:
       labels:
-        app: birdsquawk
+        app: mongo
     spec:
       containers:
-        - name: birdsquawk
-          image: jramadan/birdsquawk:0.0.1
+        - name: birdsquawk-mongo
+          image: mongo
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: birdsquawk-clusterip
+  name: mongo
 spec:
   selector:
-    app: birdsquawk
+    app: mongo
   ports:
-    - name: birdsquawk
+    - name: mongo
       protocol: TCP
-      port: 5000
-      targetPort: 5001
+      port: 27017
+      targetPort: 27017
